@@ -4,7 +4,7 @@ def pretty_print_book(book)
   puts "-----------------------"
   puts "Title: #{book["title"]}"
   puts "ISBN: #{book["isbn"]}"
-  puts "Author: #{book["authors"]}"
+  puts "Authors: #{book["authors"]}"
   puts "Description: #{book["description"]}"
   puts "-----------------------"
 end
@@ -13,7 +13,7 @@ def pretty_print_magazine(magazine)
   puts "-----------------------"
   puts "Title: #{magazine["title"]}"
   puts "ISBN: #{magazine["isbn"]}"
-  puts "Author: #{magazine["authors"]}"
+  puts "Authors: #{magazine["authors"]}"
   puts "Published: #{magazine["publishedAt"]}"
   puts "-----------------------"
 end
@@ -89,7 +89,7 @@ def find_books_and_magazines_by_author(author)
   CSV.foreach(filepathMags, {:col_sep => ";", headers: true}) do |row|
     data << row.to_hash
   end
-  matching_data =  data.select {|hash| hash["authors"] == author }
+  matching_data =  data.select {|hash| hash["authors"].split(',').include? author }
   if matching_data.length == 0
     puts "No book or magazine found for author: #{author}"
   else
