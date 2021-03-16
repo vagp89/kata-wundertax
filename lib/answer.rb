@@ -135,7 +135,6 @@ def main
     author = gets.chomp
     find_books_and_magazines_by_author(author)
   else
-    puts "here"
     sort_magazines_books_by_title
   end
 end
