@@ -20,7 +20,7 @@ You have to implement an abstracted and simple library system.
 
    If you reach this time limit stop your work immediately.
    It is one part of the kata to respect this time limit.
-   
+
 2. There are no restrictions on how to use the provided time.
    If you want to code the entire time, take a break or a cigaret - it’s up to you.
 
@@ -90,7 +90,7 @@ You have to implement an abstracted and simple library system.
    2. Clone this repository with local branch:
       ```bash
       git clone https://github.com/echocat/ruby-kata-1.git
-      git checkout -b run-<yourname>-<iteration number> 
+      git checkout -b run-<yourname>-<iteration number>
       # Example: git checkout -b run-mhenrixon-1
       ```
    3. Just download it from [here](https://github.com/echocat/ruby-kata-1/archive/master.zip)
@@ -120,7 +120,7 @@ You have to implement an abstracted and simple library system.
 
    or:
    ```bash
-   bundle exec rake test 
+   bundle exec rake test
    ```
 
 ## License
