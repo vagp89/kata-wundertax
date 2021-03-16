@@ -1,5 +1,34 @@
 require "csv"
 
+def pretty_print_book(book)
+  puts "-----------------------"
+  puts "Title: #{book["title"]}"
+  puts "ISBN: #{book["isbn"]}"
+  puts "Author: #{book["authors"]}"
+  puts "Description: #{book["description"]}"
+  puts "-----------------------"
+end
+
+def pretty_print_magazine(magazine)
+  puts "-----------------------"
+  puts "Title: #{magazine["title"]}"
+  puts "ISBN: #{magazine["isbn"]}"
+  puts "Author: #{magazine["authors"]}"
+  puts "Published: #{magazine["publishedAt"]}"
+  puts "-----------------------"
+end
+
+def pretty_print_books_magazines(books_magazines)
+  books_magazines.each do |element|
+    is_book = !element["description"].nil?
+    if is_book
+      pretty_print_book(element)
+    else
+      pretty_print_magazine(element)
+    end
+  end
+end
+
 def print_books_mags
   filepath = "data/books.csv"
   filepathMags = "data/magazines.csv"
@@ -43,15 +72,9 @@ def find_book_or_magazine_by_isbn(isbn)
   else
     is_book = !matching_data["description"].nil?
     if (is_book)
-       puts "Book found"
-       puts "Title: #{matching_data["title"]}"
-       puts "Author: #{matching_data["authors"]}"
-       puts "Description: #{matching_data["description"]}"
+       pretty_print_book(matching_data)
     else
-       puts "Magazine found"
-       puts "Title: #{matching_data["title"]}"
-       puts "Author: #{matching_data["authors"]}"
-       puts "Published: #{matching_data["publishedAt"]}"
+       pretty_print_magazine(matching_data)
     end
   end
 end
@@ -70,18 +93,8 @@ def find_books_and_magazines_by_author(author)
   if matching_data.length == 0
     puts "No book or magazine found for author: #{author}"
   else
-    matching_data.each do |element|
-      puts "-------------"
-      puts "Title: #{element["title"]}"
-      puts "Isbn: #{element["isbn"]}"
-      puts "Authors: #{element["authors"]}"
-      if (!element["description"].nil?)
-      puts "Description: #{element["description"]}"
-      else
-        puts "Published at: #{element["publishedAt"]}"
-      end
-      puts "--------------"
-    end
+    puts "----Books and magazines found by author #{author}----\n"
+    pretty_print_books_magazines(matching_data)
   end
 end
 
@@ -96,18 +109,8 @@ def sort_magazines_books_by_title
     data << row.to_hash
   end
   sorted_data =  data.sort_by {|hash| hash["title"] }
-  sorted_data.each do |element|
-    puts "-------------"
-    puts "Title: #{element["title"]}"
-    puts "Isbn: #{element["isbn"]}"
-    puts "Authors: #{element["authors"]}"
-    if (!element["description"].nil?)
-      puts "Description: #{element["description"]}"
-    else
-      puts "Published at: #{element["publishedAt"]}"
-    end
-    puts "--------------"
-  end
+  puts "----Sorted Books and magazines by title----\n"
+  pretty_print_books_magazines(sorted_data)
 end
 
 
