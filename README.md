@@ -105,24 +105,9 @@ You have to implement an abstracted and simple library system.
 
 ## FAQ
 
-##### How to run your application?
+##### How to run my kata solution?
 
 1. By command line:
    ```bash
-   ./bin/run
+   ruby lib/kata.rb
    ```
-##### How to run your tests?
-
-1. By command line:
-   ```bash
-   bundle exec rspec
-   ```
-
-   or:
-   ```bash
-   bundle exec rake test
-   ```
-
-## License
-
-See [LICENSE](LICENSE) file.
